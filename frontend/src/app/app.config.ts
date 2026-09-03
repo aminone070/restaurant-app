@@ -1,7 +1,7 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideServiceWorker } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     // Zone optimization: coalesce events to reduce change detection cycles
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideAnimationsAsync(),
+    provideAnimations(),
 
     // Router with view transitions
     provideRouter(routes, 
