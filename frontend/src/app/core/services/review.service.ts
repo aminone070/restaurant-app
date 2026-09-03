@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { Review } from '../models/review.model';
 
 const MOCK_REVIEWS: Review[] = [
@@ -13,13 +11,7 @@ const MOCK_REVIEWS: Review[] = [
 
 @Injectable({ providedIn: 'root' })
 export class ReviewService {
-  private apiUrl = 'https://fakerestaurantapi.runasp.net/reviews';
-
-  constructor(private http: HttpClient) {}
-
   getReviews(): Observable<Review[]> {
-    return this.http.get<Review[]>(this.apiUrl).pipe(
-      catchError(() => of(MOCK_REVIEWS))
-    );
+    return of(MOCK_REVIEWS);
   }
 }
